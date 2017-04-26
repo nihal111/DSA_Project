@@ -69,5 +69,5 @@ def sequenceSolver(N, board, verbose=True):
 			print "No path found"
 
 if __name__ == "__main__":
-	board = createBoard(10001)
-	sequenceSolver(10001, board)
+	board = createBoard(101)
+	sequenceSolver(101, board)
