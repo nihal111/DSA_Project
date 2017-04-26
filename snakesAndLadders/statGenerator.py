@@ -31,7 +31,7 @@ if __name__ == "__main__":
 			timeTaken = time.time() - start
 			algo3.append(timeTaken)
 			x = x + 1
-		if x==100:
+		if x==1000:
 			break
 	print "Average time for Modified Dijkstra: " + str(reduce(lambda x, y: x + y, algo1) / len(algo1))
 	print "Average time for Sequential Solver: " + str(reduce(lambda x, y: x + y, algo2) / len(algo2))
@@ -39,9 +39,6 @@ if __name__ == "__main__":
 	algo1 = [x for (y,x) in sorted(zip(files, algo1))]
 	algo2 = [x for (y,x) in sorted(zip(files, algo2))]
 	algo3 = [x for (y,x) in sorted(zip(files, algo3))]
-	print algo1
-	print algo2
-	print algo3
 	files.sort()
 	plt.plot(files, algo1, '-ro', label="Modified Dijkstra")
 	plt.plot(files, algo2, '-go', label="Sequential Solver")
