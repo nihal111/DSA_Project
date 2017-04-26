@@ -25,7 +25,9 @@ for x in range(ladders + 1, ladders + 1 + snakes):
 minStepsTo = [101 for i in range(0,101)]
 # 0 is the starting position
 minStepsTo[0] = 0
-# Initialise prevSquareFor each block
+# Initialise prevSquareFor each block. Contains previousSquare and diceRoll
+# If a dice roll of d takes the player from sq1 to sq2
+# prevSquareFor[sq2] = (sq1, dice roll)
 prevSquareFor = [(-1, -1) for i in range(0,101)]
 
 def solve():
