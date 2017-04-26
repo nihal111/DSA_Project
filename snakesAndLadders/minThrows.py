@@ -39,11 +39,11 @@ def minThrows():
 						some_other_tuple = (board[x], new_path, new_dice)
 						neighbours.append(some_other_tuple)
 						if board[x] == 100:
-							print some_other_tuple
+							a = str(new_path[0])
 							for x in range (0, len(new_dice)):
-								print "Roll " + str(new_dice[x]) + " on your dice"
-								print "You are now on " + str(new_path[1 + x])
+								a += " --[" + str(new_dice[x]) + "]-> " + str(new_path[1 + x])
 							print "Shortest path is " + str(len(new_dice)) + " steps"
+							print a
 							return
 		if neighbours != []:
 			levels.append(neighbours)
