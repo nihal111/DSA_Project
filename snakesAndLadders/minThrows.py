@@ -26,7 +26,9 @@ isCalled = [0 for i in range(0,101)]
 # Each tuple has 3 elements: (the board element, list(path to that element from 0), list(dice rolls))
 levels = []
 
-def solve():
+def modifiedDijkstra():
+	isCalled[0] = 1
+	levels.append([(0, [0], [])])
 	# For each level in the list of levels. Go step wise on each level
 	for level in levels:
 		# Maintain a list of neighbours for all squares (tuples) in a level
@@ -54,14 +56,12 @@ def solve():
 								a += " --[" + str(new_dice[x]) + "]-> " + str(new_path[1 + x])
 							print "Shortest path is " + str(len(new_dice)) + " steps"
 							print a
-							return
 		if neighbours != []:
 			# Keep adding the list of neigbour tuples, to levels
 			levels.append(neighbours)
-
-if __name__ == "__main__":
-	isCalled[0] = 1
-	levels.append([(0, [0], [])])
-	solve()
 	if not isCalled[100]:
 		print "No path found"
+
+if __name__ == "__main__":
+	modifiedDijkstra()
+	

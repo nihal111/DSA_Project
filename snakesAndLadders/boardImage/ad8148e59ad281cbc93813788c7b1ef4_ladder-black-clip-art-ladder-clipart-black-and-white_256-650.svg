@@ -1,0 +1,18 @@
+<?xml version="1.0"?><svg width="256" height="650" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>Ladder black</title>
+ <g>
+  <title>Layer 1</title>
+  <g id="layer1">
+   <g id="g4959">
+    <rect fill="#000000" fill-rule="evenodd" stroke="#000000" stroke-width="0.744331" stroke-miterlimit="4" stroke-dashoffset="0" id="rect2387" transform="matrix(0, -1, 1, 0, 0, 0)" y="34.39906" x="-96.201927" height="186.14896" width="19.255669"/>
+    <rect fill="#000000" fill-rule="evenodd" stroke="#000000" stroke-width="0.89617026px" stroke-miterlimit="4" stroke-dashoffset="0" id="rect2383" y="0.448082" x="0.44809" ry="17.194773" height="649.70795" width="34.389545"/>
+    <use fill="#000000" xlink:href="#rect2383" height="1052.3622" width="744.09448" y="0" x="220" id="use2385"/>
+    <use fill="#000000" xlink:href="#rect2387" height="1052.3622" width="744.09448" y="94.149651" x="0" id="use3159"/>
+    <use fill="#000000" xlink:href="#use3159" height="1052.3622" width="744.09448" y="94.149651" x="0" id="use3161"/>
+    <use fill="#000000" xlink:href="#use3159" height="1052.3622" width="744.09448" y="188.299309" x="0" id="use3163"/>
+    <use fill="#000000" xlink:href="#use3159" height="1052.3622" width="744.09448" y="282.448975" x="0" id="use3165"/>
+    <use fill="#000000" xlink:href="#rect2387" height="1052.3622" width="744.09448" y="470.748322" x="0" id="use3191"/>
+   </g>
+  </g>
+ </g>
+</svg>

@@ -28,7 +28,7 @@ minStepsTo[0] = 0
 # prevSquareFor[sq2] = (sq1, dice roll)
 prevSquareFor = [(-1, -1) for i in range(0, 101)]
 
-def solve():
+def sequenceSolver():
 
 	# Iterate over the first 6 squares and update minStepsTo, prevSquareFor for each
 	for sq in range (1, 7):
@@ -66,4 +66,4 @@ def solve():
 		print "No path found"
 
 if __name__ == "__main__":
-	solve()
+	sequenceSolver()
