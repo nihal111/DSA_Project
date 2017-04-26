@@ -66,6 +66,6 @@ def modifiedDijkstra(N, board, verbose=True):
 		print "No path found"
 
 if __name__ == "__main__":
-	board = createBoard(101)
-	modifiedDijkstra(101, board)
+	board = createBoard(10001)
+	modifiedDijkstra(10001, board)
 	
