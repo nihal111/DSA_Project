@@ -1,4 +1,4 @@
-go_to = [i for	 i in range(0,101)]
+board = [i for	 i in range(0,101)]
 come_from = [i for i in range(0,101)]
 
 with open("input.txt") as f:
@@ -8,41 +8,53 @@ ladders = int(inputFile[0].strip("\n"))
 for x in range(0, ladders):
 	ladderBottom = int(inputFile[x + 1].split(" ")[0])
 	ladderTop = int(inputFile[x + 1].strip("\n").split(" ")[1])
-	go_to[ladderBottom] = ladderTop
+	board[ladderBottom] = ladderTop
 	come_from[ladderTop] = ladderBottom
 
 snakes = int(inputFile[ladders+1].strip("\n"))
-
 for x in range(ladders + 1, ladders + 1 + snakes):
 	snakeHead = int(inputFile[x + 1].split(" ")[0])
 	snakeTail = int(inputFile[x + 1].strip("\n").split(" ")[1])
-	go_to[snakeHead] = snakeTail
+	board[snakeHead] = snakeTail
 	come_from[snakeTail] = snakeHead
 
-spath = [101 for i in range(0,101)]
-spathfrom = []
+minStepsTo = [101 for i in range(0,101)]
+minStepsTo[0] = 0
+prevSquareFor = [101 for i in range(0,101)]
 
-def minpath(sq):
+def solve():
+
+	# Iterate over the first 6 squares and update minStepsTo, prevSquareFor for each
 	for sq in range (1,7):
-		spath[sq] = 1
-		spathfrom[sq] = 0
+		minStepsTo[board[sq]] = 1
+		prevSquareFor[board[sq]] = 0
+
+	# Iterate over the remaining squares and update minStepsTo, prevSquareFor for each
 	for sq in range (7,101):
-	changed=0
+		changed = 0
+		# Check all 6 prior squares to find minimum steps
 		for step in range (1,7):
-			if spath[sq-step]+1<spath[go_to[sq]]:
-				spath[go_to[sq]] = spath[sq-step]+1
-				spathfrom[go_to[sq]] = sq-step
+			if minStepsTo[sq-step]+1<minStepsTo[board[sq]]:
+				minStepsTo[board[sq]] = minStepsTo[sq-step]+1
+				prevSquareFor[board[sq]] = sq-step
 				changed = 1
-		if changed == 1 and go_to[sq]<sq:
-			for sq2 in range (go_to[sq]+1,sq):
+		# If minSteps for a square has been changed and it is a snake mouth
+		# then update all blocks from the corresponding snake's tail to that snake's mouth
+		if changed == 1 and board[sq]<sq:
+			for sq2 in range (board[sq]+1,sq):
 				for step in range (1,7):
-					if spath[sq2-step]+1<spath[go_to[sq2]]:
-						spath[go_to[sq2]] = spath[sq2-step]+1
-						spathfrom[go_to[sq2]] = sq2-step
-	print "Shortest path is " + str(spath[100]) + " steps."
-	x=100
-	a = ""
-	while x>0:
-		a = a + str(spathfrom[x]) + " -> "
-		x = spathfrom[x]
-	print a
+					if minStepsTo[sq2-step]+1<minStepsTo[board[sq2]]:
+						minStepsTo[board[sq2]] = minStepsTo[sq2-step]+1
+						prevSquareFor[board[sq2]] = sq2-step
+	print "Shortest path is " + str(minStepsTo[100]) + " steps."
+	x = 100
+	a = "100"[::-1] + " >- "
+	while minStepsTo[x]!=x:
+		a = a + str(prevSquareFor[x])[::-1]
+		x = prevSquareFor[x]
+		if (x != 0):
+			 a = a + " >- "
+	print a[::-1]
+
+if __name__ == "__main__":
+	solve()
