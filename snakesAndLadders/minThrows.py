@@ -40,6 +40,7 @@ def minThrows():
 							for x in range (0, len(new_dice)):
 								print "Roll " + str(new_dice[x]) + " on your dice"
 								print "You are now on " + str(new_path[1 + x])
+							print "Shortest path is " + str(len(new_dice)) + " steps"
 							return
 		if neighbours != []:
 			levels.append(neighbours)
@@ -48,3 +49,5 @@ if __name__ == "__main__":
 	isCalled[0] = 1
 	levels.append([(0, [0], [])])
 	minThrows()
+	if not isCalled[100]:
+		print "No path found"
