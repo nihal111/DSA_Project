@@ -21,7 +21,7 @@ def createBoard(N):
 		board[snakeHead] = snakeTail
 	return board
 
-def sequenceSolver(N, board):
+def sequenceSolver(N, board, verbose=True):
 	# Initialise minSteps for each block as N
 	minStepsTo = [N for i in range(0, N)]
 	# 0 is the starting position
@@ -56,15 +56,17 @@ def sequenceSolver(N, board):
 	
 	# If path to N-1 exists
 	if minStepsTo[N-1] < N:
-		print "Shortest path is " + str(minStepsTo[N-1]) + " steps"
 		x = N-1
 		a = str(N-1)
 		while minStepsTo[x] != x:
 			a = a + " --[" + str(prevSquareFor[x][1]) + "]-> " + str(prevSquareFor[x][0])
 			x = prevSquareFor[x][0]
-		print ' '.join(w[::-1] for w in a[::-1].split())
+		if verbose:
+			print "Shortest path is " + str(minStepsTo[N-1]) + " steps"
+			print ' '.join(w[::-1] for w in a[::-1].split())
 	else:
-		print "No path found"
+		if verbose:
+			print "No path found"
 
 if __name__ == "__main__":
 	board = createBoard(101)

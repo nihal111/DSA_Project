@@ -22,7 +22,7 @@ def createBoard(N):
 
 	return board
 
-def modifiedDijkstra(N, board):
+def modifiedDijkstra(N, board, verbose=True):
 	# List to maintain if an element has been visited
 	isCalled = [0 for i in range(0, N)]
 
@@ -56,12 +56,13 @@ def modifiedDijkstra(N, board):
 							a = str(new_path[0])
 							for x in range (0, len(new_dice)):
 								a += " --[" + str(new_dice[x]) + "]-> " + str(new_path[1 + x])
-							print "Shortest path is " + str(len(new_dice)) + " steps"
-							print a
+							if verbose:
+								print "Shortest path is " + str(len(new_dice)) + " steps"
+								print a
 		if neighbours != []:
 			# Keep adding the list of neigbour tuples, to levels
 			levels.append(neighbours)
-	if not isCalled[N-1]:
+	if not isCalled[N-1] and verbose:
 		print "No path found"
 
 if __name__ == "__main__":
