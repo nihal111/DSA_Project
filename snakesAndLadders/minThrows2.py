@@ -51,15 +51,20 @@ def solve():
 					if minStepsTo[sq2-step]+1<minStepsTo[board[sq2]]:
 						minStepsTo[board[sq2]] = minStepsTo[sq2-step]+1
 						prevSquareFor[board[sq2]] = sq2-step
-	print "Shortest path is " + str(minStepsTo[100]) + " steps."
-	x = 100
-	a = "100"[::-1] + " >- "
-	while minStepsTo[x]!=x:
-		a = a + str(prevSquareFor[x])[::-1]
-		x = prevSquareFor[x]
-		if (x != 0):
-			 a = a + " >- "
-	print a[::-1]
+	
+	# If path to 100 exists
+	if minStepsTo[100] < 101:
+		print "Shortest path is " + str(minStepsTo[100]) + " steps"
+		x = 100
+		a = "100"[::-1] + " >- "
+		while minStepsTo[x]!=x:
+			a = a + str(prevSquareFor[x])[::-1]
+			x = prevSquareFor[x]
+			if (x != 0):
+				 a = a + " >- "
+		print a[::-1]
+	else:
+		print "No path found"
 
 if __name__ == "__main__":
 	solve()
