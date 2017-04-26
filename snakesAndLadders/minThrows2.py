@@ -1,9 +1,11 @@
 board = [i for	 i in range(0,101)]
 come_from = [i for i in range(0,101)]
 
+# Retrieve input from input.txt file
 with open("input.txt") as f:
     inputFile = f.readlines()
 
+# Get ladders and update board[bottom_of_ladder] to top_of_ladder
 ladders = int(inputFile[0].strip("\n"))
 for x in range(0, ladders):
 	ladderBottom = int(inputFile[x + 1].split(" ")[0])
@@ -11,6 +13,7 @@ for x in range(0, ladders):
 	board[ladderBottom] = ladderTop
 	come_from[ladderTop] = ladderBottom
 
+# Get snakes and update board[snake_mouth] to snake_tail
 snakes = int(inputFile[ladders+1].strip("\n"))
 for x in range(ladders + 1, ladders + 1 + snakes):
 	snakeHead = int(inputFile[x + 1].split(" ")[0])
@@ -18,7 +21,9 @@ for x in range(ladders + 1, ladders + 1 + snakes):
 	board[snakeHead] = snakeTail
 	come_from[snakeTail] = snakeHead
 
+#Initialise minSteps for each block as 101
 minStepsTo = [101 for i in range(0,101)]
+# 0 is the starting position
 minStepsTo[0] = 0
 prevSquareFor = [101 for i in range(0,101)]
 
