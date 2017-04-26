@@ -21,18 +21,19 @@ for x in range(ladders + 1, ladders + 1 + snakes):
 	board[snakeHead] = snakeTail
 	come_from[snakeTail] = snakeHead
 
-#Initialise minSteps for each block as 101
+# Initialise minSteps for each block as 101
 minStepsTo = [101 for i in range(0,101)]
 # 0 is the starting position
 minStepsTo[0] = 0
-prevSquareFor = [101 for i in range(0,101)]
+# Initialise prevSquareFor each block
+prevSquareFor = [(-1, -1) for i in range(0,101)]
 
 def solve():
 
 	# Iterate over the first 6 squares and update minStepsTo, prevSquareFor for each
 	for sq in range (1,7):
 		minStepsTo[board[sq]] = 1
-		prevSquareFor[board[sq]] = 0
+		prevSquareFor[board[sq]] = (0,sq)
 
 	# Iterate over the remaining squares and update minStepsTo, prevSquareFor for each
 	for sq in range (7,101):
@@ -41,7 +42,7 @@ def solve():
 		for step in range (1,7):
 			if minStepsTo[sq-step]+1<minStepsTo[board[sq]]:
 				minStepsTo[board[sq]] = minStepsTo[sq-step]+1
-				prevSquareFor[board[sq]] = sq-step
+				prevSquareFor[board[sq]] = (sq-step, 6 - step)
 				changed = 1
 		# If minSteps for a square has been changed and it is a snake mouth
 		# then update all blocks from the corresponding snake's tail to that snake's mouth
@@ -50,19 +51,17 @@ def solve():
 				for step in range (1,7):
 					if minStepsTo[sq2-step]+1<minStepsTo[board[sq2]]:
 						minStepsTo[board[sq2]] = minStepsTo[sq2-step]+1
-						prevSquareFor[board[sq2]] = sq2-step
+						prevSquareFor[board[sq2]] = (sq2-step, 6 - step)
 	
 	# If path to 100 exists
 	if minStepsTo[100] < 101:
 		print "Shortest path is " + str(minStepsTo[100]) + " steps"
 		x = 100
-		a = "100"[::-1] + " >- "
+		a = "100"
 		while minStepsTo[x]!=x:
-			a = a + str(prevSquareFor[x])[::-1]
-			x = prevSquareFor[x]
-			if (x != 0):
-				 a = a + " >- "
-		print a[::-1]
+			a = a + " <-[" + str(prevSquareFor[x][1]) + "]- "+ str(prevSquareFor[x][0])
+			x = prevSquareFor[x][0]
+		print a
 	else:
 		print "No path found"
 
