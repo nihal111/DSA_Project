@@ -44,7 +44,7 @@ def sequenceSolver():
 				minStepsTo[board[sq]] = minStepsTo[sq-step] + 1
 				prevSquareFor[board[sq]] = (sq-step, step)
 				changed = 1
-		# If minSteps for a square(snake tail) has been changed and it is a snake mouth
+		# If minSteps for a snake tail has been changed
 		# then update all blocks from the corresponding snake's tail to that snake's mouth
 		if changed == 1 and board[sq] < sq:
 			for sq2 in range (board[sq] + 1,sq):
