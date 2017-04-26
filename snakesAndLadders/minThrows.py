@@ -1,16 +1,19 @@
+# Board stores the squaremappings - ladder bottom->top, snake mouth->tail
 board = [i for i in range(0,101)]
 
+# Retrieve input from input.txt file
 with open("input.txt") as f:
     inputFile = f.readlines()
 
+# Get ladders and update board[bottom_of_ladder] to top_of_ladder
 ladders = int(inputFile[0].strip("\n"))
 for x in range(0, ladders):
 	ladderBottom = int(inputFile[x + 1].split(" ")[0])
 	ladderTop = int(inputFile[x + 1].strip("\n").split(" ")[1])
 	board[ladderBottom] = ladderTop
 
+# Get snakes and update board[snake_mouth] to snake_tail
 snakes = int(inputFile[ladders+1].strip("\n"))
-
 for x in range(ladders + 1, ladders + 1 + snakes):
 	snakeHead = int(inputFile[x + 1].split(" ")[0])
 	snakeTail = int(inputFile[x + 1].strip("\n").split(" ")[1])

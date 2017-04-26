@@ -1,3 +1,4 @@
+# Board stores the squaremappings - ladder bottom->top, snake mouth->tail
 board = [i for	 i in range(0,101)]
 come_from = [i for i in range(0,101)]
 
