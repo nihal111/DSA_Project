@@ -1,9 +1,6 @@
-board = []
-
 def createBoard(N):
-	global board
 	# Board stores the squaremappings - ladder bottom->top, snake mouth->tail
-	board = [i for i in range(0,N)]
+	board = [i for i in range(0, N)]
 
 	# Retrieve input from input.txt file
 	with open("input.txt") as f:
@@ -23,8 +20,9 @@ def createBoard(N):
 		snakeTail = int(inputFile[x + 1].strip("\n").split(" ")[1])
 		board[snakeHead] = snakeTail
 
-def modifiedDijkstra(N):
-	global board
+	return board
+
+def modifiedDijkstra(N, board):
 	# List to maintain if an element has been visited
 	isCalled = [0 for i in range(0, N)]
 
@@ -67,6 +65,6 @@ def modifiedDijkstra(N):
 		print "No path found"
 
 if __name__ == "__main__":
-	createBoard(101)
-	modifiedDijkstra(101)
+	board = createBoard(101)
+	modifiedDijkstra(101, board)
 	
