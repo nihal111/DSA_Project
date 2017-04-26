@@ -13,20 +13,19 @@ for x in range(0, ladders):
 	board[ladderBottom] = ladderTop
 
 # Get snakes and update board[snake_mouth] to snake_tail
-snakes = int(inputFile[ladders+1].strip("\n"))
+snakes = int(inputFile[ladders + 1].strip("\n"))
 for x in range(ladders + 1, ladders + 1 + snakes):
 	snakeHead = int(inputFile[x + 1].split(" ")[0])
 	snakeTail = int(inputFile[x + 1].strip("\n").split(" ")[1])
 	board[snakeHead] = snakeTail
 
-# List to maintain if an element has been visited
-isCalled = [0 for i in range(0,101)]
-
-# List of list of tuples
-# Each tuple has 3 elements: (the board element, list(path to that element from 0), list(dice rolls))
-levels = []
-
 def modifiedDijkstra():
+	# List to maintain if an element has been visited
+	isCalled = [0 for i in range(0,101)]
+
+	# List of list of tuples
+	# Each tuple has 3 elements: (the board element, list(path to that element from 0), list(dice rolls))
+	levels = []
 	isCalled[0] = 1
 	levels.append([(0, [0], [])])
 	# For each level in the list of levels. Go step wise on each level

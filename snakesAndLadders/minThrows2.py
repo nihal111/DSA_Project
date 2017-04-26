@@ -19,17 +19,16 @@ for x in range(ladders + 1, ladders + 1 + snakes):
 	snakeTail = int(inputFile[x + 1].strip("\n").split(" ")[1])
 	board[snakeHead] = snakeTail
 
-# Initialise minSteps for each block as 101
-minStepsTo = [101 for i in range(0, 101)]
-# 0 is the starting position
-minStepsTo[0] = 0
-# Initialise prevSquareFor each block. Contains previousSquare and diceRoll
-# If a dice roll of d takes the player from sq1 to sq2
-# prevSquareFor[sq2] = (sq1, dice roll)
-prevSquareFor = [(-1, -1) for i in range(0, 101)]
-
 def sequenceSolver():
-
+	# Initialise minSteps for each block as 101
+	minStepsTo = [101 for i in range(0, 101)]
+	# 0 is the starting position
+	minStepsTo[0] = 0
+	# Initialise prevSquareFor each block. Contains previousSquare and diceRoll
+	# If a dice roll of d takes the player from sq1 to sq2
+	# prevSquareFor[sq2] = (sq1, dice roll)
+	prevSquareFor = [(-1, -1) for i in range(0, 101)]
+	
 	# Iterate over the first 6 squares and update minStepsTo, prevSquareFor for each
 	for sq in range (1, 7):
 		minStepsTo[board[sq]] = 1
